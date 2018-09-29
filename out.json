@@ -1,0 +1,1 @@
+{"took":25,"timed_out":false,"_shards":{"total":3,"successful":3,"skipped":0,"failed":0},"hits":{"total":122892,"max_score":0.0,"hits":[]},"aggregations":{"range":{"buckets":[{"key":"now-1d","from":1.538179075435E12,"from_as_string":"2018-09-28T23:57:55.435Z","doc_count":2442}]}}}

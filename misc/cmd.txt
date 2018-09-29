@@ -1,0 +1,20 @@
+
+
+curl -X POST "https://stillingsok.nav.no/pam-stillingsok/search-api/stillingsok/ad/_search" -H 'Content-Type: application/json' -d'
+{
+  "size": 0,
+  "aggs": {
+        "range": {
+          "date_range": {
+            "field": "published",
+            "ranges": [
+              {
+                "key": "now-1d",
+                "from": "now-1d"
+              }
+            ]
+          }
+        }
+    }
+}
+'
