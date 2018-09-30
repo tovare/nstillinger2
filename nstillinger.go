@@ -1,3 +1,8 @@
+//
+// mstillinger - Lager et endepunkt https://tovare.com/api/stillinger som leverer
+// {"stillinger":"18357","annonser":"10413","nye":"0"}
+//
+
 package main
 
 import (
@@ -14,6 +19,9 @@ func stillinger(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(mock))
 }
 
+func oppdaterStillinger() {
+}
+
 func main() {
 	var (
 		portnummer string
@@ -27,7 +35,8 @@ func main() {
 		ticker := time.NewTicker(5000 * time.Millisecond)
 		go func() {
 			for t := range ticker.C {
-				log.Println("Oppdaterte data ", t)
+				oppdaterStillinger()
+				log.Println("Oppdaterer ", t)
 			}
 		}()
 	}
