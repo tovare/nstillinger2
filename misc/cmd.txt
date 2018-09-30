@@ -18,3 +18,399 @@ curl -X POST "https://stillingsok.nav.no/pam-stillingsok/search-api/stillingsok/
     }
 }
 '
+
+curl -X POST "https://stillingsok.nav.no/pam-stillingsok/search-api/stillingsok/ad/_search" -H 'Content-Type: application/json' -d'
+{
+  "from": 0,
+  "size": 50,
+  "query": {
+    "bool": {
+      "must": {
+        "multi_match": {
+          "query": "",
+          "type": "best_fields",
+          "fields": [
+            "category_no^2",
+            "title_no^1",
+            "searchtags_no^0.4",
+            "adtext_no^0.2",
+            "employer.name^0.2",
+            "employerdescription_no^0.1"
+          ],
+          "tie_breaker": 0.3,
+          "minimum_should_match": 1,
+          "zero_terms_query": "all"
+        }
+      },
+      "should": [
+        {
+          "match_phrase": {
+            "title": {
+              "query": "",
+              "slop": 2
+            }
+          }
+        },
+        {
+          "constant_score": {
+            "filter": {
+              "match": {
+                "location.municipal": {
+                  "query": ""
+                }
+              }
+            },
+            "boost": 3
+          }
+        },
+        {
+          "constant_score": {
+            "filter": {
+              "match": {
+                "location.county": {
+                  "query": ""
+                }
+              }
+            },
+            "boost": 3
+          }
+        }
+      ]
+    }
+  },
+  "post_filter": {
+    "bool": {
+      "filter": [
+        {
+          "term": {
+            "status": "ACTIVE"
+          }
+        },
+        {
+          "bool": {
+            "should": []
+          }
+        },
+        {
+          "bool": {
+            "should": []
+          }
+        },
+        {
+          "bool": {
+            "should": []
+          }
+        },
+        {
+          "bool": {
+            "should": []
+          }
+        },
+        {
+          "bool": {
+            "should": []
+          }
+        }
+      ]
+    }
+  },
+  "_source": {
+    "includes": [
+      "properties.employer",
+      "properties.jobtitle",
+      "properties.location",
+      "properties.applicationdue",
+      "applicationdue",
+      "title",
+      "updated",
+      "uuid"
+    ]
+  },
+  "aggs": {
+    "published": {
+      "filter": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "status": "ACTIVE"
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "range": {
+          "date_range": {
+            "field": "published",
+            "ranges": [
+              {
+                "key": "now-1d",
+                "from": "now-1d"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sector": {
+      "filter": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "status": "ACTIVE"
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "values": {
+          "terms": {
+            "field": "sector_facet"
+          }
+        }
+      }
+    },
+    "extent": {
+      "filter": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "status": "ACTIVE"
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "values": {
+          "terms": {
+            "field": "extent_facet"
+          }
+        }
+      }
+    },
+    "engagementType": {
+      "filter": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "status": "ACTIVE"
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "values": {
+          "terms": {
+            "field": "engagementtype_facet"
+          }
+        }
+      }
+    },
+    "counties": {
+      "filter": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "status": "ACTIVE"
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "values": {
+          "terms": {
+            "field": "county_facet",
+            "size": 20,
+            "order": {
+              "_key": "asc"
+            }
+          },
+          "aggs": {
+            "municipals": {
+              "terms": {
+                "field": "municipal_facet",
+                "size": 100,
+                "order": {
+                  "_key": "asc"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "occupationFirstLevels": {
+      "filter": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "status": "ACTIVE"
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            },
+            {
+              "bool": {
+                "should": []
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "values": {
+          "terms": {
+            "field": "occupation_level1_facet"
+          },
+          "aggs": {
+            "occupationSecondLevels": {
+              "terms": {
+                "field": "occupation_level2_facet"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sort": [
+    {
+      "updated": {
+        "order": "desc"
+      }
+    },
+    "_score"
+  ]
+}
+'
+
+
+

@@ -5,7 +5,7 @@ dist/
 *.code-workspace
 .vscode/
 .DS_Store
-
+out*
 
 # Binaries for programs and plugins
 *.exe
