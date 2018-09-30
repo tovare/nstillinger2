@@ -23,7 +23,7 @@ func main() {
 		prefix     string
 	)
 	flag.StringVar(&portnummer, "p", ":8085", "Hvilket portnummer/adresse")
-	flag.StringVar(&prefix, "prefix", "/api", "Hvilket adresse ligger løsningen på")
+	flag.StringVar(&prefix, "prefix", "/api", "Løsningens adresse")
 	flag.Parse()
 
 	{
