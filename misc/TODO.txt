@@ -9,13 +9,13 @@ Analyse:
     [  ] Antall stillinger
     [  ] Antall annonser
     [  ] Antall nye annonser
-
 Utvikling
 ===============
 
 [  ] Kjør query og hent ut data. Enkel marshall ?
 [  ] Kopier data til ny struktur og kjør ut json som endepunktet https://tovare.com/api/stillinger
 [  ] Persistens av siste gyldige data.
+[  ] Oppdater tallene hvert 5. minutt
 
 Deploy
 ===============
