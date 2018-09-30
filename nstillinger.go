@@ -1,20 +1,30 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"log"
 	"net/http"
 	"time"
 )
 
-func stillinger(w http.ResponseWriter, r *http.Request) {
-	// TODO: Unmarshall
-	mock := `{"stillinger":"000","annonser":"000","nye":"0"}`
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Write([]byte(mock))
+// Antall ... holder resultatet
+type Antall struct {
+	Stillinger int `json:"stillinger"`
+	Annonser   int `json:"annonser"`
+	Nye        int `json:"nye"`
 }
 
-func oppdaterStillinger() {
+var antallStillinger Antall
+
+func stillinger(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	s, _ := json.Marshal(antallStillinger)
+	w.Write(s)
+}
+
+func oppdaterAntall() {
+	// TODO:
 }
 
 func main() {
@@ -27,10 +37,11 @@ func main() {
 	flag.Parse()
 
 	{
+		///antallStillinger := Antall{}
 		ticker := time.NewTicker(5000 * time.Millisecond)
 		go func() {
 			for t := range ticker.C {
-				oppdaterStillinger()
+				oppdaterAntall()
 				log.Println("Oppdaterer ", t)
 			}
 		}()

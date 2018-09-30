@@ -6,6 +6,6 @@ import (
 )
 
 func TestOppdaterStillinger(T *testing.T) {
-	oppdaterStillinger()
+	oppdaterAntall()
 	log.Println("Kjørte test")
 }
