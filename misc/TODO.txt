@@ -2,13 +2,24 @@
 
 Før 12. desember 2018:
 
+Analyse:
+===========
+
 [  ] Finn query som finner stillinger, annonser og antall nye annonser
     [  ] Antall stillinger
     [  ] Antall annonser
     [  ] Antall nye annonser
+
+Utvikling
+===============
+
 [  ] Kjør query og hent ut data. Enkel marshall ?
 [  ] Kopier data til ny struktur og kjør ut json som endepunktet https://tovare.com/api/stillinger
 [  ] Persistens av siste gyldige data.
+
+Deploy
+===============
+
 [  ] Oppdater init.d script, sikre automatisk restart.
-[  ] Oppdater API-overvåkning
+[  ] Oppdater API-overvåkning ?
 
