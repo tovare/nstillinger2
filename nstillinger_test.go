@@ -5,7 +5,8 @@ import (
 	"testing"
 )
 
-func TestOppdaterStillinger(T *testing.T) {
-	oppdaterAntall()
-	log.Println("Kjørte test")
+func TestHentAntall(T *testing.T) {
+	tmp := hentAntall()
+
+	log.Println("Kjørte test ", tmp)
 }

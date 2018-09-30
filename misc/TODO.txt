@@ -6,9 +6,9 @@ Analyse:
 ===========
 
 [  ] Finn query som finner stillinger, annonser og antall nye annonser
-    [  ] Antall stillinger
-    [  ] Antall annonser
-    [  ] Antall nye annonser
+    [ /] Antall stillinger
+    [OK] Antall annonser
+    [OK] Antall nye annonser
 Utvikling
 ===============
 
