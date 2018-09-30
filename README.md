@@ -1,4 +1,5 @@
 
+I desember fjernes det gamle stillingssøket slik at jeg ikke lenger kan skrape siden for å få løpende tall slik som i nstillinger
 
 Lager et endepunkt https://tovare.com/api/stillinger som leverer {"stillinger":"18357","annonser":"10413","nye":"0"}
 
