@@ -1,5 +1,12 @@
 
 
+Lager et endepunkt https://tovare.com/api/stillinger som leverer {"stillinger":"18357","annonser":"10413","nye":"0"}
+
+    Usage of nstillinger
+    -p string
+            Hvilket portnummer/adresse (default ":8085")
+    -prefix string
+            Hvilket adresse ligger løsningen på (default "/api")
 
 
 Tov Are Jacobsen, 2018

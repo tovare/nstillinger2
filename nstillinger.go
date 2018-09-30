@@ -1,8 +1,3 @@
-//
-// mstillinger - Lager et endepunkt https://tovare.com/api/stillinger som leverer
-// {"stillinger":"18357","annonser":"10413","nye":"0"}
-//
-
 package main
 
 import (
