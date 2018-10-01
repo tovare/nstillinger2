@@ -31,8 +31,7 @@ func hentAntall() Antall {
 				DocCount int `json:"doc_count"`
 				Range    struct {
 					Buckets []struct {
-						FromAsString time.Time `json:"from_as_string"`
-						DocCount     int       `json:"doc_count"`
+						DocCount int `json:"doc_count"`
 					} `json:"buckets"`
 				} `json:"range"`
 			} `json:"published"`
@@ -127,13 +126,10 @@ func main() {
 		}()
 	}
 
-	checkErr := func(err error) {
-		if err != nil {
-			log.Fatal("ERROR:", err)
-		}
-	}
 	http.HandleFunc(prefix+"/stillinger", stillinger) // set router
 	err := http.ListenAndServe(portnummer, nil)       // set listen port
-	checkErr(err)
+	if err != nil {
+		log.Fatal("ERROR:", err)
+	}
 	log.Println("API stillinger, lytter til adresse  ", portnummer)
 }

@@ -16,6 +16,7 @@ Utvikling
 [OK] Kjør query og hent ut data. Enkel marshall ?
 [OK] Kopier data til ny struktur og kjør ut json som endepunktet https://tovare.com/api/stillinger
 [OK] Oppdater tallene hvert 5. minutt
+[  ] Benchmark http 
 
 Deploy
 ===============
