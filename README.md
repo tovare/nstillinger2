@@ -1,4 +1,4 @@
-
+ 
 I desember 2018 fjernes det gamle stillingssøket slik at jeg ikke lenger kan
 skrape siden for å få løpende tall slik som i nstillinger
 
@@ -14,5 +14,7 @@ Beregnet for å ligge bak en https proxy som NGNIX og init.d
     -prefix string
             Hvilket adresse ligger løsningen på (default "/api")
 
+
+Dette er mot et midlertidig API, vi får se hva som kommer.
 
 Tov Are Jacobsen, 2018
