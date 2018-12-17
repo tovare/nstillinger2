@@ -166,6 +166,8 @@ func hentAntall() Antall {
 		} `json:"aggregations"`
 	}
 
+	// https://stillingsok.nav.no/pam-stillingsok/stilling/63d63fda-66f8-4da0-bdbe-1d3044fca1a5
+
 	tmp := Antall{}
 
 	res, err := http.Get("https://stillingsok.nav.no/api/search")

@@ -5,7 +5,7 @@ Antall stillinger
 I desember 2018 fjernes det gamle stillingssøket slik at jeg ikke lenger kan
 skrape siden for å få løpende tall slik som i nstillinger
 
-Lager et endepunkt [](https://tovare.com/api/stillinger) som leverer 
+Lager et endepunkt [https://tovare.com/api/stillinger](https://tovare.com/api/stillinger) som leverer 
 
     {"stillinger":"18357","annonser":"10413","nye":"0"}
 
@@ -22,7 +22,7 @@ Dette er mot et midlertidig API, vi får se hva som kommer. Foreløpige endepunk
 Endepunkt
 
 
-URL [](https://stillingsok.nav.no/api/search")
+URL [https://stillingsok.nav.no/api/search](https://stillingsok.nav.no/api/search)
 
 Parametere
 
